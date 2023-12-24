@@ -1,10 +1,10 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"os"
 	"errors"
+	"github.com/thegera4/profit_calculator/press_enter_to_exit"
 )
 
 func main() {
@@ -33,7 +33,7 @@ func main() {
 	ebt, profit, ratio := calculations(revenue, expenses, taxRate)
 	storeResults(ebt, profit, ratio)
 	printResults(ebt, profit, ratio)
-	waitForEnter()
+	press_enter_to_exit.WaitForEnter()
 }
 
 func askForInput(text string) (float64, error) {
@@ -63,10 +63,4 @@ func printResults(ebt, profit, ratio float64) {
 	fmt.Printf("Your Earnings Before Tax (EBT): %.2f\n", ebt)
 	fmt.Printf("Your Profit: %.2f\n", profit)
 	fmt.Printf("Your Ratio: %.2f\n", ratio)
-}
-
-func waitForEnter() {
-	fmt.Println("Press enter to exit...")
-	scanner := bufio.NewScanner(os.Stdin)
-	scanner.Scan()
 }
